@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+
 import Footer from "../components/Footer";
 
 import HeroSection from "../sections/HeroSection";
@@ -9,8 +9,6 @@ import WhyCortexSection from "../sections/WhyCortexSection";
 export default function Home() {
   return (
     <main className="bg-[#050816] text-white overflow-hidden">
-
-      <Navbar />
 
       <div className="space-y-0">
 

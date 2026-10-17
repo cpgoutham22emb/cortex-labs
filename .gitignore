@@ -1,35 +1,93 @@
+```gitignore
 # ==========================================
-# Frontend (Next.js)
+# CORTEX LABS — ROOT GITIGNORE
+# Location: cortex-labs/.gitignore
 # ==========================================
+
+
+# ==========================================
+# ENVIRONMENT VARIABLES AND SECRETS
+# ==========================================
+
+# Environment files anywhere in the repository
+.env
+.env.*
+
+# Allow safe environment templates to be committed
+!.env.example
+!.env.*.example
+
+
+# ==========================================
+# FRONTEND — NEXT.JS
+# ==========================================
+
 frontend/node_modules/
 frontend/.next/
 frontend/out/
 frontend/.turbo/
-frontend/.env.local
+
+# Frontend environment files
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+!frontend/.env.*.example
+
 
 # ==========================================
-# Backend (Python)
+# BACKEND — DJANGO / PYTHON
 # ==========================================
+
+# Python virtual environments
 backend/venv/
-backend/__pycache__/
+backend/.venv/
+
+# Python cache directories at any backend depth
+backend/**/__pycache__/
+
+# Compiled Python files
 backend/**/*.py[cod]
-backend/.env
+
+# Django generated files
 backend/media/
 backend/staticfiles/
 
+
 # ==========================================
-# IDE
+# LOCAL DATABASES
 # ==========================================
+
+# SQLite databases anywhere in the project
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+
+
+# ==========================================
+# IDE AND EDITOR
+# ==========================================
+
 .vscode/
 .idea/
 
-# ==========================================
-# Logs
-# ==========================================
-*.log
 
 # ==========================================
-# OS
+# LOGS
 # ==========================================
+
+*.log
+
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+
 Thumbs.db
 .DS_Store
+```
+
+# ==========================================
+# LOCAL PROJECT STRUCTURE REPORT
+# ==========================================
+structure.txt
