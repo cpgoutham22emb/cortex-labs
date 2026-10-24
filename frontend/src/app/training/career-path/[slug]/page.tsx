@@ -17,6 +17,7 @@ import { createPaymentOrder, verifyPayment } from "@/services/payments";
 import { loadRazorpay } from "@/lib/razorpay";
 import { useAuthStore } from "@/store/authStore";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import FreeTrainingConsultation from "@/components/FreeTrainingConsultation";
 
 export default function CareerPathProductPage() {
   const params = useParams();
@@ -682,7 +683,7 @@ export default function CareerPathProductPage() {
           </button>
 
         </div>
-
+          <FreeTrainingConsultation />
       </section>
 
     </main>

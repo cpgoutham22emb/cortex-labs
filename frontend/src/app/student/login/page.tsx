@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useEffect, useState } from "react";
+import type { SyntheticEvent } from "react";
 import { Eye, EyeOff, ArrowRight, Cpu } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -11,7 +12,7 @@ import { useAuthStore } from "@/store/authStore";
 export default function StudentLoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { setAuth, setAccessToken } = useAuthStore();
+  const { setAuth, setAccessToken, user, isAuthenticated  } = useAuthStore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +20,14 @@ export default function StudentLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+  if (isAuthenticated && user?.role === "STUDENT") {
+    router.replace("/student/dashboard");
+  }
+}, [isAuthenticated, user, router]);
+
   async function handleSubmit(
-    event: FormEvent<HTMLFormElement>,
+    event: SyntheticEvent<HTMLFormElement>,
   ) {
     event.preventDefault();
 
@@ -71,8 +78,12 @@ export default function StudentLoginPage() {
     }
   }
 
+  if (isAuthenticated && user?.role === "STUDENT") {
+    return null;
+  }
   return (
     <main className="min-h-screen bg-[#05070b] text-white">
+
       <div className="grid min-h-screen lg:grid-cols-2">
 
         {/* LEFT SIDE */}

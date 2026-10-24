@@ -1,6 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useEffect, useState } from "react";
+import type { SyntheticEvent } from "react";
+import { useAuthStore } from "@/store/authStore";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { register } from "@/services/auth";
@@ -8,8 +10,15 @@ import { register } from "@/services/auth";
 export default function SignupPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { user, isAuthenticated } = useAuthStore();
 
   const next = searchParams.get("next") || "/student/dashboard";
+
+  useEffect(() => {
+    if (isAuthenticated && user?.role === "STUDENT") {
+      router.replace("/student/dashboard");
+    }
+  }, [isAuthenticated, user, router]);
 
   const [form, setForm] = useState({
     first_name: "",
@@ -31,7 +40,7 @@ export default function SignupPage() {
     });
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (
@@ -83,6 +92,9 @@ export default function SignupPage() {
     }
   };
 
+  if (isAuthenticated && user?.role === "STUDENT") {
+    return null;
+  }
   return (
     <main className="min-h-screen bg-[#050A14] text-white flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg">

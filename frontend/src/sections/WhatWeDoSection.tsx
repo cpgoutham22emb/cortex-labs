@@ -114,7 +114,7 @@ export default function WhatWeDoSection() {
                 key={service.id}
                 href={
                   service.slug === "embedded-systems-training"
-                    ? "/training"
+                    ? "/services/training"
                     : `/services/${service.slug}`
                 }
                 className="block"

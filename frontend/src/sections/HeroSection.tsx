@@ -1,8 +1,8 @@
-
-
 "use client";
 
+
 import Image from "next/image";
+import Link from "next/link";
 import HeroBoard from "../assets/images/hero-board.jpg";
 
 import { motion } from "framer-motion";
@@ -13,174 +13,197 @@ import {
   FaRobot,
 } from "react-icons/fa";
 
+const offerings = [
+  {
+    label: "training",
+    icon: FaMicrochip,
+    title: (
+      <>
+        Industry-Focused
+        <br />
+        Training
+      </>
+    ),
+  },
+  {
+    label: "consultancy",
+    icon: FaTools,
+    title: (
+      <>
+        Expert
+        <br />
+        Consultancy
+      </>
+    ),
+  },
+  {
+    label: "development",
+    icon: FaRobot,
+    title: (
+      <>
+        End-to-End
+        <br />
+        Development
+      </>
+    ),
+  },
+];
+
+const highlights = [
+  {
+    title: "Hands-on Learning",
+    description: "Real hardware. Real skills.",
+  },
+  {
+    title: "Practical Approach",
+    description: "Build. Debug. Deploy.",
+  },
+  {
+    title: "Problem Solvers",
+    description: "Engineering meaningful solutions.",
+  },
+  {
+    title: "Future Ready",
+    description: "AI, Edge, IoT and beyond.",
+  },
+];
+
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen bg-[#050816] overflow-hidden pt-32">
-
+    <section
+      id="home"
+      className="relative overflow-hidden bg-[#050816] pt-28 text-white sm:pt-32"
+    >
       {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 blur-[160px] rounded-full" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 -top-20 h-[400px] w-[400px] rounded-full bg-blue-500/15 blur-[140px] sm:h-[600px] sm:w-[600px]"
+      />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 pb-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
         {/* LEFT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
           className="relative z-10"
         >
-
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          {/* Main Heading */}
+          <h1 className="max-w-2xl text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl md:text-6xl xl:text-7xl">
             Engineering the
             <br />
-
             Intelligence Behind
-
-            <span className="block text-blue-500 mt-2">
+            <span className="mt-2 block text-blue-500">
               Embedded Systems
             </span>
           </h1>
 
-          <p className="mt-8 text-gray-400 text-lg leading-relaxed max-w-xl">
-            Cortex Labs provides hands-on training,
-            expert consultancy, and end-to-end embedded
-            system development services to build intelligent,
-            reliable and future-ready products.
+          {/* Description */}
+          <p className="mt-7 max-w-xl text-base leading-7 text-gray-400 sm:mt-8 sm:text-lg sm:leading-8">
+            Cortex Labs provides hands-on training, expert consultancy,
+            and end-to-end embedded system development services to build
+            intelligent, reliable and future-ready products.
           </p>
 
-          {/* FEATURES */}
-          <div className="mt-10 grid grid-cols-3 gap-6">
+          {/* Core Offerings */}
+          <div className="mt-8 grid max-w-lg grid-cols-3 gap-3 sm:mt-10 sm:gap-6">
+            {offerings.map((offering) => {
+              const Icon = offering.icon;
 
-            <div className="flex flex-col items-start gap-2">
-              <FaMicrochip className="text-3xl text-blue-500" />
+              return (
+                <div
+                  key={offering.label}
+                  className="flex flex-col items-start gap-3"
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="text-2xl text-blue-500 sm:text-3xl"
+                  />
 
-              <p className="font-medium">
-                Industry-Focused
-                <br />
-                Training
-              </p>
-            </div>
-
-            <div className="flex flex-col items-start gap-2">
-              <FaTools className="text-3xl text-blue-500" />
-
-              <p className="font-medium">
-                Expert
-                <br />
-                Consultancy
-              </p>
-            </div>
-
-            <div className="flex flex-col items-start gap-2">
-              <FaRobot className="text-3xl text-blue-500" />
-
-              <p className="font-medium">
-                End-to-End
-                <br />
-                Development
-              </p>
-            </div>
-
+                  <p className="text-xs font-medium leading-5 text-gray-200 sm:text-sm sm:leading-6">
+                    {offering.title}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* BUTTONS */}
-          <div className="mt-10 flex gap-4">
-
-            <button className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-medium shadow-lg shadow-blue-500/20">
+          {/* Call to Action */}
+          <div className="mt-9 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
+            <Link
+              href="/services/training"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition duration-300 hover:scale-[1.03] hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816] sm:px-6"
+            >
               Explore Training
-            </button>
+            </Link>
 
-            <button className="border border-white/20 hover:border-blue-500 hover:bg-blue-500/10 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-medium">
+            <Link
+              href="/services"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:border-blue-500 hover:bg-blue-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816] sm:px-6"
+            >
               Our Services
-            </button>
-
+            </Link>
           </div>
-
         </motion.div>
 
         {/* RIGHT VISUAL */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2 }}
-          className="relative flex justify-center items-center"
+          transition={{ duration: 1 }}
+          className="relative mx-auto flex w-full max-w-xl items-center justify-center"
         >
+          {/* Decorative Rings */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-[250px] w-[250px] rounded-full border border-blue-500/20 sm:h-[350px] sm:w-[350px] lg:h-[420px] lg:w-[420px]"
+          />
 
-          {/* Outer Glow Ring */}
-          <div className="absolute w-[500px] h-[500px] border border-blue-500/20 rounded-full" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-[200px] w-[200px] rounded-full border border-blue-500/30 sm:h-[280px] sm:w-[280px] lg:h-[340px] lg:w-[340px]"
+          />
 
-          <div className="absolute w-[400px] h-[400px] border border-blue-500/30 rounded-full" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-[150px] w-[150px] rounded-full border border-blue-500/40 sm:h-[220px] sm:w-[220px] lg:h-[260px] lg:w-[260px]"
+          />
 
-          <div className="absolute w-[300px] h-[300px] border border-blue-500/40 rounded-full" />
+          {/* Image Glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-64 w-64 rounded-full bg-blue-500/20 blur-[100px] sm:h-96 sm:w-96"
+          />
 
-          {/* Main Card */}
-          {/* Main Embedded Board Image */}
-          <div className="relative flex justify-center items-center">
-
-            <div className="absolute w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
-
+          {/* Embedded Board Image */}
+          <div className="relative z-10 w-full">
             <Image
               src={HeroBoard}
-              alt="Cortex Labs Embedded Board"
-              className="relative z-10 object-contain drop-shadow-[0_0_40px_rgba(37,99,235,0.6)]"
+              alt="Cortex Labs embedded development board"
               priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 45vw"
+              className="relative h-auto w-full object-contain drop-shadow-[0_0_40px_rgba(37,99,235,0.45)]"
             />
-
           </div>
-
         </motion.div>
-
       </div>
 
       {/* BOTTOM FEATURE STRIP */}
-      <div className="relative mt-24 max-w-7xl mx-auto px-6">
+      <div className="relative mx-auto mt-10 max-w-7xl px-6 pb-12 sm:mt-16 sm:pb-16 lg:mt-20">
+        <div className="grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-[#0B1220]/80 p-6 backdrop-blur-md sm:grid-cols-2 sm:gap-8 sm:p-8 lg:grid-cols-4">
+          {highlights.map((highlight) => (
+            <div key={highlight.title}>
+              <h3 className="font-semibold text-blue-500">
+                {highlight.title}
+              </h3>
 
-        <div className="bg-[#0B1220]/80 border border-white/10 rounded-2xl backdrop-blur-md grid md:grid-cols-4 gap-8 p-8">
-
-          <div>
-            <h3 className="font-semibold text-blue-500">
-              Hands-on Learning
-            </h3>
-
-            <p className="text-gray-400 text-sm mt-2">
-              Real hardware. Real skills.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-blue-500">
-              Practical Approach
-            </h3>
-
-            <p className="text-gray-400 text-sm mt-2">
-              Build. Debug. Deploy.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-blue-500">
-              Problem Solvers
-            </h3>
-
-            <p className="text-gray-400 text-sm mt-2">
-              Engineering meaningful solutions.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-blue-500">
-              Future Ready
-            </h3>
-
-            <p className="text-gray-400 text-sm mt-2">
-              AI, Edge, IoT and beyond.
-            </p>
-          </div>
-
+              <p className="mt-2 text-sm leading-6 text-gray-400">
+                {highlight.description}
+              </p>
+            </div>
+          ))}
         </div>
-
       </div>
-
     </section>
   );
 }

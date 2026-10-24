@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "training",
     "dashboard",
     "services",
+    "contact",
 ]
 
 MIDDLEWARE = [

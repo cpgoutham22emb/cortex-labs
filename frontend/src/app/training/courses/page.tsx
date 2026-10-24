@@ -9,6 +9,7 @@ import {
   type Course,
 } from "@/services/courses";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import FreeTrainingConsultation from "@/components/FreeTrainingConsultation";
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -145,6 +146,7 @@ export default function CoursesPage() {
             ))}
           </div>
         )}
+        <FreeTrainingConsultation />
       </section>
     </main>
   );

@@ -10,7 +10,7 @@ import {
 
 import { getCareerPath } from "@/services/training";
 import Breadcrumbs from "@/components/Breadcrumbs";
-
+import FreeTrainingConsultation from "@/components/FreeTrainingConsultation";
 interface CareerPathData {
   id: number;
   course_id: number;
@@ -231,6 +231,7 @@ export default function CareerPathPage() {
 
         </div>
 
+          <FreeTrainingConsultation />
       </section>
 
     </main>

@@ -49,24 +49,34 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-sm text-gray-300">
-          <a
-            href="/"
-            className="hover:text-blue-500 transition"
-          >
+        <nav className="hidden lg:flex items-center gap-5 text-sm text-gray-300">
+          <a href="/" className="hover:text-blue-500 transition">
             Home
           </a>
 
-          <a
-            href="/services"
-            className="hover:text-blue-500 transition"
-          >
-            Services
+          <a href="/services/training" className="hover:text-blue-500 transition">
+            Training
+          </a>
+
+          <a href="/services" className="hover:text-blue-500 transition">
+            Engineering Services
+          </a>
+
+          <a href="/#projects" className="hover:text-blue-500 transition">
+            Projects
+          </a>
+
+          <a href="/about" className="hover:text-blue-500 transition">
+            About
+          </a>
+
+          <a href="/contact" className="hover:text-blue-500 transition">
+            Contact
           </a>
         </nav>
 
         {/* Desktop Auth */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
 
           {!isAuthenticated ? (
             <>
@@ -143,8 +153,9 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="lg:hidden text-2xl"
           onClick={() => setMobileMenu(true)}
+          aria-label="Open navigation menu"
         >
           <FaBars />
         </button>
@@ -173,21 +184,53 @@ export default function Navbar() {
             {/* Links */}
             <div className="flex flex-col gap-8 mt-16 text-lg">
 
-                <a
-                  href="/"
-                  onClick={() => setMobileMenu(false)}
-                  className="hover:text-blue-500 transition"
-                >
-                  Home
-                </a>
+              <a
+                href="/"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                Home
+              </a>
 
-                <a
-                  href="/services"
-                  onClick={() => setMobileMenu(false)}
-                  className="hover:text-blue-500 transition"
-                >
-                  Services
-                </a>
+              <a
+                href="/services/training"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                Training
+              </a>
+
+              <a
+                href="/services"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                Engineering Services
+              </a>
+
+              <a
+                href="/#projects"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                Projects
+              </a>
+
+              <a
+                href="/about"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                About
+              </a>
+
+              <a
+                href="/contact"
+                onClick={() => setMobileMenu(false)}
+                className="hover:text-blue-500 transition"
+              >
+                Contact
+              </a>
 
               {!isAuthenticated ? (
                 <div className="flex flex-col gap-3">

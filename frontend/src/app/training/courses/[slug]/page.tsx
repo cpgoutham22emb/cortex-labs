@@ -16,6 +16,7 @@ import {
 } from "@/services/courses";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
+import FreeTrainingConsultation from "@/components/FreeTrainingConsultation";
 
 export default function CourseDetailsPage() {
   const params = useParams();
@@ -356,6 +357,7 @@ export default function CourseDetailsPage() {
           </div>
 
         </div>
+         <FreeTrainingConsultation />
       </section>
     </main>
   );
